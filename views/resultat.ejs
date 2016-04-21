@@ -67,18 +67,56 @@
 
                 <div class="sous_livre">
                     <div class="defilement">
-                        <button class="btn btn-block btn-xs btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Description </button>
-                        <h6> Ici on pourra faire un court résumé de chaque livre. Sur le web service il doit y avoir une section de résumé comme on le trouve au dos de chauque livre. Si non cette section peut disparairtre.</h6>
+                        <!-- Bouton pour afficher le résumé du livre dans une popin -->
+                        <button type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#ModalResume"><span class="glyphicon glyphicon-plus-sign"></span> Description </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalResume" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Contenu du modal-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Résumé</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6> Ici on pourra faire un court résumé de chaque livre. Sur le web service il doit y avoir une section de résumé comme on le trouve au dos de chauque livre. Si non cette section peut disparairtre.</h6>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+                    <br><br>
+
                     <div class="defilement">
-                        <button class="btn btn-block btn-xs btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Détail </button>
-                        <h6>
-                            <li>Auteur</li>
-                            <li>Editeur</li>
-                            <li>Date de parution</li>
-                            <li>thème</li>
-                        </h6>
+                        <button type="button" class="btn btn-block btn-xs btn-primary" data-toggle="modal" data-target="#ModalDetail"><span class="glyphicon glyphicon-plus-sign"></span> Détail </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="ModalDetail" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Contenu du modal-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Résumé</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <li>Auteur</li>
+                                        <li>Editeur</li>
+                                        <li>Date de parution</li>
+                                        <li>thème</li>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
+                    <br><br>
                     <div align="center">
                         <button type="button" id="lire" class="btn btn-default">Lire</button>
                         <button type="button" id="telecharger" class="btn btn-default">Télécharger</button>

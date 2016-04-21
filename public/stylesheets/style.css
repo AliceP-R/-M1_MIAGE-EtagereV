@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+.defilement {
+  position: relative;
+  margin-bottom:-25px;
+}
+.defilement h6 {text-indent:-15000px;}
+
+.defilement:hover h6 {text-indent:inherit; margin-bottom: 35px; }
