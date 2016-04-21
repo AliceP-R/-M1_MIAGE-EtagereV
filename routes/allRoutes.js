@@ -23,9 +23,6 @@ router.all('/resultat/:categorie/', function(req, res, next) {
   var pauteur = req.body.auteur;
   var ptitre = req.body.titre;
   var ptheme = req.body.theme;
-  console.log(JSON.stringify(gcateg, undefined, 2));
-
-
 
   var ListeObjetLivre= {
     "titre":[]
@@ -47,13 +44,11 @@ router.all('/resultat/:categorie/', function(req, res, next) {
       url=url+gcateg+"&";
 
   url=url+"lang=fr&offset=1&limit=100&view=brief&addfields=lccn&apikey="+apikey;
-  console.log(url);
 
   client.get(url, function (data, response) {
     // On décortique la réponse en un objet Javascript
     // Pour chaque livre
     for (var i = 0; i < data.docs.length; i++) {
-
       //On récupère le titre
       ListeObjetLivre.titre[i] = data.docs[i].title;
 
@@ -68,9 +63,11 @@ router.all('/resultat/:categorie/', function(req, res, next) {
         ListeISBN.isbn[i] = data.docs[i].isbn;
       }
     }
+
+    res.render('resultat', {categ: gcateg, auteur: pauteur, titre: ptitre, theme: ptheme, listelivres: ListeObjetLivre, listeISBN: ListeISBN});
   })
 
-  res.render('resultat', {categ: gcateg, auteur: pauteur, titre: ptitre, theme: ptheme, listelivres: ListeObjetLivre, listeISBN: ListeISBN});
+
 })
 
 module.exports = router;

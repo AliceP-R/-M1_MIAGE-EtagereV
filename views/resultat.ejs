@@ -35,8 +35,64 @@
     </div>
     <div class="row">
         <form id="search_form" method="post" action="/resultat/<%=categ%>">
-            <% include partials/search.ejs%>
+            <% include partials/search.ejs %>
         </form>
+    </div>
+    <div class="row">
+        <% /*console.log(JSON.stringify(locals.listelivres.titre.length, undefined, 5))*/%>
+        <!-- Vue details -->
+        <% if(locals.listelivres.titre.length != 0 && locals.listeISBN.isbn.length != 0 && locals.listeISBN.lccn.length)
+        {
+        %>
+        <div class="row">
+            <%for(var i=0;i<listelivres.titre.length;i++)
+            {
+            %>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#">
+                    <% if(listeISBN.isbn[i]){
+
+                    %>
+                    <img class="img-responsive" src="http://covers.openlibrary.org/b/lccn/<%= listeISBN.isbn[i]%>-M.jpg" alt="">
+                    <%}
+                    else{
+                    %>
+                    <img class="img-responsive" src="http://covers.openlibrary.org/b/lccn/<%= listeISBN.lccn[i]%>-M.jpg" alt="">
+                    <%
+                    }
+                    %>
+                    <p><%= listelivres.titre[i]%></p>
+
+                </a>
+
+                <div class="sous_livre">
+                    <div class="defilement">
+                        <button class="btn btn-block btn-xs btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Description </button>
+                        <h6> Ici on pourra faire un court résumé de chaque livre. Sur le web service il doit y avoir une section de résumé comme on le trouve au dos de chauque livre. Si non cette section peut disparairtre.</h6>
+                    </div>
+                    <div class="defilement">
+                        <button class="btn btn-block btn-xs btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Détail </button>
+                        <h6>
+                            <li>Auteur</li>
+                            <li>Editeur</li>
+                            <li>Date de parution</li>
+                            <li>thème</li>
+                        </h6>
+                    </div>
+                    <div align="center">
+                        <button type="button" id="lire" class="btn btn-default">Lire</button>
+                        <button type="button" id="telecharger" class="btn btn-default">Télécharger</button>
+                    </div>
+                </div>
+            </div>
+            <%
+            } // fin for
+            } // fin if
+                else
+            {
+            %>
+            <h3 class="text-center"> Aucun résultat pour votre recherche</h3>
+            <% } %>
     </div>
     <% include partials/footer.ejs%>
 </div>
