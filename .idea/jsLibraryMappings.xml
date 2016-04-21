@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{EtageV node_modules}" />
+    <file url="PROJECT" libraries="{bootstrap, itemslide, jquery, jquery-ui, jquery.mousewheel, sly}" />
+    <includedPredefinedLibrary name="Node.js Core" />
+  </component>
+</project>

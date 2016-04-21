@@ -1,0 +1,28 @@
+<form id="search_form" method="post" action="/liste">
+    <ul class="nav nav-tabs" style="background-color: white;">
+        <li class="active"><a data-toggle="tab" href="#home">Auteur</a></li>
+        <li><a data-toggle="tab" href="#menu1">Titre</a></li>
+        <li><a data-toggle="tab" href="#menu2">Thème</a></li>
+    </ul>
+    <br>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div class="col-xs-3">
+                <input class="form-control" name="auteur" id="search_author" type="text" placeholder="Auteur">
+            </div>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <div class="col-xs-3">
+                <input class="form-control" name="titre" id="search_title" type="text" placeholder="Titre">
+            </div>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <div class="col-xs-3">
+                <input class="form-control" name="theme" id="search_theme" type="text" placeholder="Thème">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">Recherche</button>
+    </div>
+</form>
+<br><br>
