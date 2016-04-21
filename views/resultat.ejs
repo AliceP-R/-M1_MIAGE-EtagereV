@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Votre recherche</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap, JQuery, JQueryUI -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Css Perso -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <% include partials/header.ejs%>
+        <div class="container text-center">
+            <h4> Résultat de votre recherche avec
+
+                <%=categ%>
+
+                <%=auteur%>
+
+                <%=titre%>
+
+                <%=theme%>
+                 </h4>
+        </div>
+    </div>
+    <div class="row">
+        <form id="search_form" method="post" action="/resultat/<%=categ%>">
+            <% include partials/search.ejs%>
+        </form>
+    </div>
+    <% include partials/footer.ejs%>
+</div>
+
+</body>
+</html>

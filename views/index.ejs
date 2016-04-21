@@ -17,6 +17,9 @@
   <script src="http://darsain.github.io/sly/js/sly.min.js"></script>
   <link rel="stylesheet" href="/stylesheets/carrousel.css">
   <script src="/javascripts/carrousel.js"></script>
+  <!-- permet d'afficher les chevrons dans les boutons de navigation du Carrousel -->
+  <link rel="stylesheet" href="http://darsain.github.io/sly/css/font-awesome.css">
+
 </head>
 <body>
 
@@ -25,7 +28,9 @@
     <% include partials/header.ejs%>
   </div>
   <div class="row">
-   <% include partials/search.ejs%>
+    <form id="search_form" method="post" action="/resultat/null">
+      <% include partials/search.ejs%>
+    </form>
     <% include partials/carrousel.ejs%>
   </div>
   <% include partials/footer.ejs%>

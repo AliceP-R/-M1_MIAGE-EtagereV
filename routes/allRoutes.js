@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const assert = require('assert');
 
 // Permet de récupérer des données envoyer par la méthode POST
 var server = express();
@@ -16,41 +17,50 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Etagère Virtuelle' });
 })
 
+router.all('/resultat/:categorie/', function(req, res, next) {
 
-router.post('/liste', function(req, res, next) {
+  var gcateg = req.params.categorie;
   var pauteur = req.body.auteur;
   var ptitre = req.body.titre;
   var ptheme = req.body.theme;
+  console.log(JSON.stringify(gcateg, undefined, 2));
 
-  console.log("pauteur = "+pauteur+" ptitre = "+ ptitre +" ptheme = " + ptheme);
-  res.render('liste', {auteur: pauteur, titre: ptitre, theme: ptheme});
-})
 
-router.get('/liste/:categorie/', function(req, res, next) {
-  var gcateg = req.params.categorie;
+
   var ListeObjetLivre= {
-    "livres":[]
+    "titre":[]
   };
   var ListeIdLivres= {
-    "livre":[]
+    "id":[]
   };
   var ListeISBN= {
     "isbn":[],
     "lccn":[]
   };
 
-  var url = "https://api-na.hosted.exlibrisgroup.com/primo/v1/pnxs?q=any,contains,book;facet_tlevel,exact,online_resources;facet_lcc,exact,"+categorie+"&lang=fr&offset=1&limit=100&view=brief&addfields=lccn&apikey="+apikey;
+  var url = "https://api-na.hosted.exlibrisgroup.com/primo/v1/pnxs?q=any,contains,book;facet_tlevel,exact,online_resources;facet_lcc,exact,";
+  if(gcateg == "null")
+  {
+    gcateg = "";
+  }
+  else
+      url=url+gcateg+"&";
+
+  url=url+"lang=fr&offset=1&limit=100&view=brief&addfields=lccn&apikey="+apikey;
+  console.log(url);
 
   client.get(url, function (data, response) {
-    // parsed response body as js object
-    //console.log(data);
+    // On décortique la réponse en un objet Javascript
+    // Pour chaque livre
     for (var i = 0; i < data.docs.length; i++) {
-      //Récupère le titre
-      ListeObjetLivre.livres[i] = data.docs[i].title;
 
-      //Récupère l'id du livre
-      ListeIdLivres.livre[i] = data.docs[i].pnxId;
+      //On récupère le titre
+      ListeObjetLivre.titre[i] = data.docs[i].title;
 
+      //on recupère l'id
+      ListeIdLivres.id[i] = data.docs[i].pnxId;
+
+      // on recupère l'ISBN ou le LCCN
       if (data.docs[i].lccn) {
         ListeISBN.lccn[i] = data.docs[i].lccn;
       }
@@ -60,8 +70,7 @@ router.get('/liste/:categorie/', function(req, res, next) {
     }
   })
 
-  console.log(gcateg);
-  res.render('liste', {categ: gcateg, auteur: null, titre: null, theme: null});
+  res.render('resultat', {categ: gcateg, auteur: pauteur, titre: ptitre, theme: ptheme, listelivres: ListeObjetLivre, listeISBN: ListeISBN});
 })
 
 module.exports = router;

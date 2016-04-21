@@ -1,4 +1,3 @@
-body { background: #e8e8e8; }
 .container { margin: 0 auto; }
 
 /* Example wrapper */
@@ -59,6 +58,20 @@ body { background: #e8e8e8; }
 
 /* Controls */
 .controls { margin: 25px 0; text-align: center; }
+.icon-chevron-left:before {
+    content: "\f053";
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    text-decoration: inherit;
+    display: inline-block;
+}
+.icon-chevron-right:before {
+    content: "\f054";
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    text-decoration: inherit;
+    display: inline-block;
+}
 
 /* Image */
 .img-perso
